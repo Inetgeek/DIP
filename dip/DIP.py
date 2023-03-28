@@ -95,8 +95,8 @@ class DIP(object):
         assert 0 <= x2 <= 255, "The value of x2 must be between 0 and 255 !"
         assert 0 <= y1 <= 255, "The value of y1 must be between 0 and 255 !"
         assert 0 <= y2 <= 255, "The value of y2 must be between 0 and 255 !"
-        assert x1 <= x2, "The value of x1 must be lower than x2 !"
-        assert y1 <= y2, "The value of y1 must be lower than y2 !"
+        assert x1 <= x2, "The value of x1 must be lower than x2's !"
+        assert y1 <= y2, "The value of y1 must be lower than y2's !"
         self.init_img = img_path
         self.X1 = x1
         self.X2 = x2
@@ -142,8 +142,8 @@ class DIP(object):
         assert 0 <= x2 <= 255, "The value of x2 must be between 0 and 255 !"
         assert 0 <= y1 <= 255, "The value of y1 must be between 0 and 255 !"
         assert 0 <= y2 <= 255, "The value of y2 must be between 0 and 255 !"
-        assert x1 <= x2, "The value of x1 must be lower than x2 !"
-        assert y1 <= y2, "The value of y1 must be lower than y2 !"
+        assert x1 <= x2, "The value of x1 must be lower than x2's !"
+        assert y1 <= y2, "The value of y1 must be lower than y2's !"
         img_i = cv.imread(self.init_img).astype(np.uint8)
         img_d = linear_stretch(img_i, x1, x2, y1, y2)
         img_init = f'./{self.output}/dips_img.png'
