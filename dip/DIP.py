@@ -90,6 +90,12 @@ class DIP(object):
     """
 
     def __init__(self, img_path: str, output_dir: str, x1: int = 0, x2: int = 255, y1: int = 0, y2: int = 255):
+        assert 0 <= x1 <= 255, "The value of x1 must be between 0 and 255 !"
+        assert 0 <= x2 <= 255, "The value of x2 must be between 0 and 255 !"
+        assert 0 <= y1 <= 255, "The value of y1 must be between 0 and 255 !"
+        assert 0 <= y2 <= 255, "The value of y2 must be between 0 and 255 !"
+        assert x1 <= x2, "The value of x1 must be lower than x2 !"
+        assert y1 <= y2, "The value of y1 must be lower than y2 !"
         self.init_img = img_path
         self.X1 = x1
         self.X2 = x2
@@ -112,12 +118,6 @@ class DIP(object):
         获取原始图片的背景图、对比度折线图及RGB灰度直方图
         :return: img_init, img_line, img_hist
         """
-        assert 0 <= x1 <= 255, "The value of x1 must be between 0 and 255 !"
-        assert 0 <= x2 <= 255, "The value of x2 must be between 0 and 255 !"
-        assert 0 <= y1 <= 255, "The value of y1 must be between 0 and 255 !"
-        assert 0 <= y2 <= 255, "The value of y2 must be between 0 and 255 !"
-        assert x1 <= x2, "The value of x1 must be lower than x2 !"
-        assert y1 <= y2, "The value of y1 must be lower than y2 !"
         img = cv.imread(self.init_img).astype(np.uint8)
         img_init = f'./{self.output}/init_img.png'
         img_line = f'./{self.output}/init_line.png'
