@@ -13,6 +13,7 @@
 __name__ = "dip"
 __author__ = "Colyn"
 __email__ = "digran@foxmail.com"
+__repo__ = "https://github.com/Inetgeek/"
 
 
 __all__ = ['DIP', 'log']
