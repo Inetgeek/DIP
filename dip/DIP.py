@@ -36,8 +36,8 @@ def plt_hist(img, save_path):
     :param save_path: 图片保存位置
     :return: None
     """
-    ar = img[:, :, 0].flatten()
     plt.figure(figsize=(5, 5), dpi=300)
+    ar = img[:, :, 0].flatten()
     plt.hist(ar, bins=256, density=1, facecolor='r', edgecolor='r')
     ag = img[:, :, 1].flatten()
     plt.hist(ag, bins=256, density=1, facecolor='g', edgecolor='g')
@@ -112,6 +112,12 @@ class DIP(object):
         获取原始图片的背景图、对比度折线图及RGB灰度直方图
         :return: img_init, img_line, img_hist
         """
+        assert 0 <= x1 <= 255, "The value of x1 must be between 0 and 255 !"
+        assert 0 <= x2 <= 255, "The value of x2 must be between 0 and 255 !"
+        assert 0 <= y1 <= 255, "The value of y1 must be between 0 and 255 !"
+        assert 0 <= y2 <= 255, "The value of y2 must be between 0 and 255 !"
+        assert x1 <= x2, "The value of x1 must be lower than x2 !"
+        assert y1 <= y2, "The value of y1 must be lower than y2 !"
         img = cv.imread(self.init_img).astype(np.uint8)
         img_init = f'./{self.output}/init_img.png'
         img_line = f'./{self.output}/init_line.png'
