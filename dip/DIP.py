@@ -26,7 +26,7 @@ def plt_line(X, Y, save_path):
     plt.figure(figsize=(5, 5), dpi=300)
     plt.plot(X, Y, marker='o', markersize=5, markeredgecolor="red", markerfacecolor="red")
     plt.savefig(save_path)
-    # plt.show()
+    plt.clf()
 
 
 def plt_hist(img, save_path):
@@ -44,7 +44,7 @@ def plt_hist(img, save_path):
     ab = img[:, :, 2].flatten()
     plt.hist(ab, bins=256, density=1, facecolor='b', edgecolor='b')
     plt.savefig(save_path)
-    # plt.show()
+    plt.clf()
 
 
 def plt_imgs(img, save_path):
@@ -59,7 +59,7 @@ def plt_imgs(img, save_path):
     plt.yticks([])
     plt.imshow(img[:, :, ::-1], cmap='gray', vmin=0, vmax=255)
     plt.savefig(save_path)
-    # plt.show()
+    plt.clf()
 
 
 def linear_stretch(img, x1, x2, y1, y2):
@@ -152,3 +152,33 @@ class DIP(object):
         plt_imgs(img_d, img_init)
 
         return img_init, img_line, img_hist
+
+    def get_cmp_plot(self, *args, **kwargs):
+        """
+        绘制处理前后的图片本身、对比折线图及灰度直方图
+        :param args: 需要显示的图片路径
+        :param kwargs: 设置需要显示的图片标题
+        :return: None
+        """
+        length, skip, list_img, cnt = len(args), -1, [], 0
+        if type(args[0]).__name__ == "DIP":
+            length -= 1
+            skip = 0
+
+        for i in args:
+            if skip == args.index(i):
+                continue
+            assert os.path.exists(f'{i}'), f"The {i} is not exist!"
+            list_img.append(i)
+        width = 3
+        height = (length // 3 + 1) if length % 3 else (length // 3)
+        title = [_ for _ in kwargs]
+        plt.figure(figsize=(width * 5, height * 5), dpi=300)
+        img = [cv.imread(im).astype(np.uint8) for im in list_img]
+        for im in img:
+            plt.subplot(height, width, (cnt + 1)), plt.imshow(im, cmap='gray', vmin=0, vmax=255), plt.title(kwargs[title[cnt]])
+            cnt += 1
+        plt.tight_layout()
+        plt.savefig(f"./{self.output}/cmp.png")
+        plt.show()
+        plt.clf()

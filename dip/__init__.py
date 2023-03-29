@@ -12,7 +12,7 @@
 
 __name__ = "dip"
 __author__ = "Colyn"
-__email__ = "ranshens@foxmail.com"
+__email__ = "digran@foxmail.com"
 
 
-__all__ = ['DIP']
+__all__ = ['DIP', 'log']

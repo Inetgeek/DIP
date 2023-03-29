@@ -3,11 +3,13 @@
 
 > Algorithm: Piecewise Linear Stretch Transformation
 
+![](./assets/cmp.png)
+
 ### Before processing
 
 -------
 
-<img src="./assets/init_img.png" style="zoom: 25%;" /> <img src="./assets/init_line.png" style="zoom:25%;" /> <img src="./assets/init_hist.png" style="zoom:25%;" />
+<p><img src="./assets/init_img.png" style="zoom: 25%;" /> <img src="./assets/init_line.png" style="zoom:25%;" /> <img src="./assets/init_hist.png" style="zoom:25%;" /></p>
 
 
 
@@ -15,7 +17,7 @@
 
 ---------
 
-<img src="./assets/dips_img.png" style="zoom:25%;" /> <img src="./assets/dips_line.png" style="zoom:25%;" /> <img src="./assets/dips_hist.png" style="zoom:25%;" /> 
+<p><img src="./assets/dips_img.png" style="zoom:25%;" /> <img src="./assets/dips_line.png" style="zoom:25%;" /> <img src="./assets/dips_hist.png" style="zoom:25%;" /></p>
 
 
 

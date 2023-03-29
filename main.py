@@ -9,21 +9,38 @@
  @file: main.py
 """
 from dip.DIP import DIP
+from dip import log as l
 
 if __name__ == '__main__':
-    print("========== DEMO ==========")
-    dip = DIP(img_path="./pic/1.png", output_dir="data")
-    print(dip.is_exist())
-    dip.get_init_img()
-    dip.get_dips_img(x1=220, x2=240, y1=250, y2=250)
+    print("==" * 10, "DEMO", "==" * 10)
+    log = l.Log(name='log.txt', log_level=l.logging.DEBUG)
+
+    dip = DIP(img_path="./pic/2.png", output_dir="data")
+    log.debug(f"Is the image exist? [{dip.is_exist()}]")
+
+    init_img, init_line, init_hist = dip.get_init_img()
+    log.info(f"The initial image is in: {init_img}")
+    log.info(f"The initial line is in: {init_line}")
+    log.info(f"The initial hist is in: {init_hist}")
+
+    dips_img, dips_line, dips_hist = dip.get_dips_img(x1=120, x2=240, y1=250, y2=250)
+    log.info(f"The diped image is in: {dips_img}")
+    log.info(f"The diped line is in: {dips_line}")
+    log.info(f"The diped hist is in: {dips_hist}")
+    # 绘图
+    dip.get_cmp_plot(init_img, init_line, init_hist,
+                     dips_img, dips_line, dips_hist,
+                     i_im="Initial Image", i_li="Intial Contrast", i_hi="Initial Gray Scale",
+                     d_im="Diped Image", d_li="Diped Contrast", d_hi="Diped Gray Scale")
     del dip
+
 """
 first of all，先安装如下几个包：
 -------------------------------------------------------------------------
-pip install --upgrade pip
-pip install matplotlib -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install --upgrade pip
+    pip install matplotlib -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install numpy -i https://pypi.tuna.tsinghua.edu.cn/simple
+    pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
 ------------------------------------------------------------------------- 
 
 0.刚进入软件的时候，先初始化x1, x2, y1, y2。
@@ -44,4 +61,6 @@ pip install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
     dip = DIP(img_path="./pic/xxx", output_dir="data", x1=20, x2=140, y1=100, y2=150) # x1-y2可不写，但是建议传上次的值进来
     # dip = DIP(img_path="./pic/xxx", output_dir="data") # 不传x1-y2亦可
 -------------------------------------------------------------------------
+
+6.正式开发或使用过程中请注释掉有关log模块的代码，以避免不必要的报错，此处引入仅仅为了DEBUG时打印更美观，但该模块是非必要的。
 """
