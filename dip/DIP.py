@@ -128,7 +128,7 @@ class DIP(object):
 
         return img_init, img_line, img_hist
 
-    def get_dips_img(self, x1: int = 0, x2: int = 255, y1: int = 0, y2: int = 255):
+    def get_dips_img(self, x1: int, x2: int, y1: int, y2: int):
         """
         获取处理后图片的背景图、对比度折线图及RGB灰度直方图
         :param x1: 点A的横坐标
