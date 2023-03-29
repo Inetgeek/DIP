@@ -17,6 +17,11 @@
 		<td><img src="./data/init_line.png" style="zoom:30%;" /></td>
 		<td><img src="./data/init_hist.png" style="zoom:30%;" /></td>
 	</tr>
+	<tr>
+		<td>Picture before processing</td>
+		<td>Contrast before processing</td>
+		<td>Grayscale before processing</td>
+	</tr>
 </table>
 
 ---------
@@ -29,6 +34,11 @@
 		<td><img src="./data/dips_img.png" style="zoom:30%;" /></td>
 		<td><img src="./data/dips_line.png" style="zoom:30%;" /></td>
 		<td><img src="./data/dips_hist.png" style="zoom:30%;" /></td>
+	</tr>
+	<tr>
+		<td>Picture after processing</td>
+		<td>Contrast after processing</td>
+		<td>Grayscale after processing</td>
 	</tr>
 </table>
 
